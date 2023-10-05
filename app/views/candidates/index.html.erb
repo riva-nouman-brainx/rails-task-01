@@ -1,0 +1,40 @@
+<div class="display-3 text-center mt-4 ">Candidates</div>
+<div class="container position-cards d-flex justify-content-center flex-wrap">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Date of Birth</th>
+        <th scope="col">Email</th>
+        <th scope="col">Experience</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@candidates.each do |candidate|%>
+        <tr>
+          <th scope="row">1</th>
+          <td><%=candidate.name%></td>
+          <td><%=candidate.dob%></td>
+          <td><%=candidate.email%></td>
+          <td><%=candidate.industry_experience%></td>
+          <td class="dropdown">
+            <button class="dropdown-toggle custom-dropdown-button dots-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa-solid fa-ellipsis-vertical"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <%= link_to "Edit", edit_position_candidate_path(@position, candidate), class: "dropdown-item" %>
+              <%= link_to "Delete", position_candidate_path(@position, candidate), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  }, class: "dropdown-item" %>
+            </div>
+          </td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>
+<div class="d-flex justify-content-center mt-3">
+  <%= link_to "Add Candidate", new_position_candidate_path, class: "btn btn-secondary" %>
+</div>

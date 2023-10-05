@@ -1,0 +1,36 @@
+<%= form_with model: [ @position, @candidate ] do |form| %>
+  <div class="container jutify-content-center text-center mt-4">
+    <div class="m-3 test">
+      <%= form.label :name, class: "label-form" %><br>
+      <%= form.text_field :name %>
+      <%candidate.errors.full_messages_for(:name).each do |message|%>
+        <div><%=message%></div>
+      <%end%>
+    </div>
+    <div class="m-3">
+      <%= form.label :dob, class: "label-form" %><br>
+      <%= form.text_field :dob %>
+      <%candidate.errors.full_messages_for(:dob).each do |message|%>
+        <div><%=message%></div>
+      <%end%>
+    </div>
+    <div class="m-3">
+      <%= form.label :email, class: "label-form" %><br>
+      <%= form.text_field :email %>
+      <%candidate.errors.full_messages_for(:email).each do |message|%>
+        <div><%=message%></div>
+      <%end%>
+    </div>
+    <div class="m-3">
+      <%= form.label :industry_experience, class: "label-form" %><br>
+      <%= form.text_field :industry_experience %>
+      <%candidate.errors.full_messages_for(:industry_experience).each do |message|%>
+        <div><%=message%></div>
+      <%end%>
+    </div>
+    <div class="m-3">
+      <%= form.submit "#{candidate.persisted? ? 'Update' : 'Create'}", class: "details-button px-5"%>
+    </div>
+  </div>
+</div>
+<% end %>

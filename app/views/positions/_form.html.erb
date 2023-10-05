@@ -1,0 +1,28 @@
+<%= form_with model: position do |form| %>
+  <div class="container jutify-content-center text-center mt-4">
+    <div class="m-3 test">
+      <%= form.label :title, class: "label-form" %><br>
+      <%= form.text_field :title %>
+      <% position.errors.full_messages_for(:title).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+    <div class="m-3">
+      <%= form.label :experience, class: "label-form" %><br>
+      <%= form.text_area :experience %>
+      <% position.errors.full_messages_for(:experience).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+    <div class="m-3">
+      <%= form.label :employment_type, class: "label-form" %><br>
+      <%= form.text_area :employment_type %>
+      <% position.errors.full_messages_for(:employment_type).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+    <div class="m-3">
+      <%= form.submit "#{position.persisted? ? 'Update' : 'Create'}", class: "details-button px-5"%>
+    </div>
+  </div>
+<% end %>

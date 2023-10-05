@@ -1,0 +1,29 @@
+<div class="display-3 text-center mt-4 ">Positions</div>
+<div class="container position-cards d-flex justify-content-center flex-wrap">
+  <% @positions.each do |position| %>
+    <div class="card text-center m-3" style="width: 18rem;">
+      <div class="dropdown">
+        <button class="dropdown-toggle custom-dropdown-button va-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa-solid fa-ellipsis-vertical"></i>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <%= link_to "Edit", edit_position_path(position.id), class: "dropdown-item" %>
+          <%= link_to "Delete", position_path(position.id), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  }, class: "dropdown-item" %>
+        </div>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= position.title %></h5>
+        <p class="card-text">Experience: <%= position.experience %></p>
+        <p class="card-text">Employment Type: <%= position.employment_type %></p>
+        <%= link_to "Show Details", position_candidates_path(position), class: "details-button" %>
+        <%# <button class="details-button">Show Details</button> %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="d-flex justify-content-center mt-3">
+  <%= link_to "Create New Postion", new_position_path, class: "btn btn-secondary" %>
+</div>
