@@ -21,12 +21,12 @@ class CandidatesController < ApplicationController
 
   def edit
     @position = Position.find(params[:position_id])
-    @candidate = Candidate.find(params[:position_id])
+    @candidate = Candidate.find(params[:id])
   end
 
   def update
     @position = Position.find(params[:position_id])
-    @candidate = Candidate.find(params[:position_id])
+    @candidate = Candidate.find(params[:id])
 
     if @candidate.update(candidate_params)
       redirect_to position_candidates_path
@@ -36,8 +36,8 @@ class CandidatesController < ApplicationController
   end
 
   def destroy
-    @position = Position.find(params[:id])
-    @candidate = Candidate.find(params[:position_id])
+    @position = Position.find(params[:position_id])
+    @candidate = Candidate.find(params[:id])
     @candidate.destroy
 
     redirect_to position_candidates_path, status: :see_other

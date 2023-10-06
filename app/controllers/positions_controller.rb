@@ -37,9 +37,16 @@ class PositionsController < ApplicationController
 
   def destroy
     @position = Position.find(params[:id])
+
+    # Delete associated candidates
+    @position.candidates.each do |candidate|
+      candidate.destroy
+    end
+
+    # Now, delete the position
     @position.destroy
 
-    redirect_to position, status: :see_other
+    redirect_to root_path, status: :see_other
   end
 
   private
