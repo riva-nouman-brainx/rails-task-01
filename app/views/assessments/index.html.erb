@@ -1,0 +1,18 @@
+<div class="display-3 text-center mt-4 ">Assessments</div>
+<div class="container position-cards d-flex justify-content-center flex-wrap">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Test File</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@assessments.each do |assessment|%>
+        <tr>
+          <td><%=assessment.title%></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>

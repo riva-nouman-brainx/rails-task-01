@@ -43,6 +43,11 @@ body {
   font-weight: bold;
 }
 .image-div {
+  width: 200px;
+  height: 200px;
+  /* margin: 10px; */
+}
+.index-img {
   width: 100px;
   height: 100px;
 }
