@@ -3,6 +3,7 @@
   <table class="table">
     <thead>
       <tr>
+        <th scope="col">Picture</th>
         <th scope="col">Name</th>
         <th scope="col">Date of Birth</th>
         <th scope="col">Email</th>
@@ -12,6 +13,9 @@
     <tbody>
       <%@candidates.each do |candidate|%>
         <tr>
+          <td>
+            <%= image_tag candidate.profile_picture, class: 'table' if candidate.profile_picture.attached? %>
+          </td>
           <td><%=candidate.name%></td>
           <td><%=candidate.dob%></td>
           <td><%=candidate.email%></td>

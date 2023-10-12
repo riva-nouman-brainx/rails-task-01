@@ -1,5 +1,8 @@
 <%= form_with model: position do |form| %>
   <div class="container jutify-content-center text-center mt-4">
+    <div class="container-fluid image-div d-flex justify-content-center">
+      <%= image_tag @position.thumbnail if @position.thumbnail.attached? %>
+    </div>
     <div class="m-3 test">
       <%= form.label :title, class: "label-form" %><br>
       <%= form.text_field :title %>
@@ -20,6 +23,13 @@
       <% position.errors.full_messages_for(:employment_type).each do |message| %>
         <div><%= message %></div>
       <% end %>
+    </div>
+    <div class="m-3">
+      <%= form.label :thumbnail, class: "label-form" %><br>
+      <%= form.file_field :thumbnail, class:"text-center" %>
+      <%position.errors.full_messages_for(:email).each do |message|%>
+        <div><%=message%></div>
+      <%end%>
     </div>
     <div class="m-3">
       <%= form.submit "#{position.persisted? ? 'Update' : 'Create'}", class: "details-button px-5"%>
