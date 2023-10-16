@@ -1,5 +1,5 @@
 <div class="display-3 text-center mt-4 ">Candidates</div>
-<div class="container position-cards d-flex justify-content-center flex-wrap">
+<div class=" position-cards d-flex justify-content-center flex-wrap px-5">
   <table class="table">
     <thead>
       <tr>
@@ -8,6 +8,8 @@
         <th scope="col">Date of Birth</th>
         <th scope="col">Email</th>
         <th scope="col">Experience</th>
+        <th scope="col">Assessment</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -20,8 +22,11 @@
           <td><%=candidate.dob%></td>
           <td><%=candidate.email%></td>
           <td><%=candidate.industry_experience%></td>
+          <td>
+            <%= candidate.assessment&.title%>
+          </td>
           <td class="dropdown">
-            <button class="dropdown-toggle custom-dropdown-button dots-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="dropdown-toggle dots-btn" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa-solid fa-ellipsis-vertical"></i>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -30,9 +35,13 @@
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   }, class: "dropdown-item" %>
+              <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= candidate.id %>">
+                Assign
+              </button>
             </div>
           </td>
         </tr>
+        <%= render "modal", candidate: candidate %>
       <%end%>
     </tbody>
   </table>

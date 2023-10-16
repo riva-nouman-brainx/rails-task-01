@@ -23,7 +23,7 @@ body {
   text-decoration: none;
   color: white;
 }
-.custom-dropdown-button::after {
+.va-btn::after {
   display: none;
 }
 .fva {
@@ -32,17 +32,29 @@ body {
 .va-btn {
   border: none;
   flex-direction: row;
-  margin-left: 269px;
+  margin-left: 257px;
+  background-color: white;
+  color: black;
+  content: none;
+  border-radius: 0px;
 }
 .dots-btn {
   border: none;
   flex-direction: row;
   background-color: #f4f4f4;
 }
+.dots-btn::after {
+  display: none;
+}
 .label-form {
   font-weight: bold;
 }
 .image-div {
+  width: 200px;
+  height: 200px;
+  /* margin: 10px; */
+}
+.index-img {
   width: 100px;
   height: 100px;
 }

@@ -1,0 +1,14 @@
+<%= form_with model: assessment do |form| %>
+  <div class="container jutify-content-center text-center mt-4">
+    <div class="m-3">
+      <%= form.label :title, class: "label-form" %><br>
+      <%= form.text_field :title %>
+    </div>
+    <div class="m-3">
+      <%= form.label :test, class: "label-form" %><br>
+      <%= form.file_field :test, class:"text-center" %>
+    </div>
+    <div class="m-3">
+      <%= form.submit "#{assessment.persisted? ? 'Update' : 'Create'}", class: "details-button px-5"%>
+    </div>
+  <%end%>
