@@ -1,5 +1,8 @@
 <%= form_with model: [ @position, @candidate ] do |form| %>
   <div class="container jutify-content-center text-center mt-4">
+    <div class="container-fluid image-div d-flex justify-content-center">
+      <%= image_tag @candidate.profile_picture if @candidate.profile_picture.attached? %>
+    </div>
     <div class="m-3 test">
       <%= form.label :name, class: "label-form" %><br>
       <%= form.text_field :name %>
@@ -25,6 +28,27 @@
       <%= form.label :industry_experience, class: "label-form" %><br>
       <%= form.text_field :industry_experience %>
       <%candidate.errors.full_messages_for(:industry_experience).each do |message|%>
+        <div><%=message%></div>
+      <%end%>
+    </div>
+    <div class="m-3">
+      <%= form.label :documents, class: "label-form" %><br>
+      <%= form.file_field :documents %>
+      <%candidate.errors.full_messages_for(:email).each do |message|%>
+        <div><%=message%></div>
+      <%end%>
+    </div>
+    <div class="m-3">
+      <%= form.label :resume, class: "label-form" %><br>
+      <%= form.file_field :resume, class:"text-center" %>
+      <%candidate.errors.full_messages_for(:email).each do |message|%>
+        <div><%=message%></div>
+      <%end%>
+    </div>
+    <div class="m-3">
+      <%= form.label :profile_picture, class: "label-form" %><br>
+      <%= form.file_field :profile_picture, class:"text-center" %>
+      <%candidate.errors.full_messages_for(:email).each do |message|%>
         <div><%=message%></div>
       <%end%>
     </div>

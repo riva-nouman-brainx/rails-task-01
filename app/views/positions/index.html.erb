@@ -15,6 +15,7 @@
         </div>
       </div>
       <div class="card-body">
+        <%= image_tag position.thumbnail, class: 'image-div' if position.thumbnail.attached? %>
         <h5 class="card-title"><%= position.title %></h5>
         <p class="card-text">Experience: <%= position.experience %></p>
         <p class="card-text">Employment Type: <%= position.employment_type %></p>

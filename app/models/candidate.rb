@@ -1,4 +1,7 @@
 class Candidate < ApplicationRecord
+  has_many_attached :documents
+  has_one_attached :profile_picture
+  has_one_attached :resume
   belongs_to :position
 
   validates :name, presence: true
