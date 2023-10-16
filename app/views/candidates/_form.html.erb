@@ -9,7 +9,7 @@
         <p class="mt-3">No file uploaded</p>
       <% end %>
     </div>
-    <div class="m-3 test">
+    <div class="m-3">
       <%= form.label :name, class: "label-form" %><br>
       <%= form.text_field :name %>
       <%candidate.errors.full_messages_for(:name).each do |message|%>

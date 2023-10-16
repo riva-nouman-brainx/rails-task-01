@@ -43,6 +43,14 @@ class CandidatesController < ApplicationController
     redirect_to position_candidates_path, status: :see_other
   end
 
+  def assign_assessment_to_candidate
+    @candidate = Candidate.find(params[:candidate_id])
+    @assessment = Assessment.find(params[:assessment_id])
+    assign = Assign.find_or_create_by(candidate: @candidate, assessment: @assessment, status: "pending")
+
+    redirect_to position_candidates_path
+  end
+
   private
 
   def candidate_params

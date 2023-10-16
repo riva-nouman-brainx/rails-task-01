@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_12_142940) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_16_083448) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -43,6 +43,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_142940) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "assigns", force: :cascade do |t|
+    t.string "status"
+    t.integer "candidate_id", null: false
+    t.integer "assessment_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assessment_id"], name: "index_assigns_on_assessment_id"
+    t.index ["candidate_id"], name: "index_assigns_on_candidate_id"
   end
 
   create_table "candidates", force: :cascade do |t|
@@ -78,5 +88,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_142940) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "assigns", "assessments"
+  add_foreign_key "assigns", "candidates"
   add_foreign_key "candidates", "positions"
 end
