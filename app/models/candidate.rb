@@ -3,7 +3,7 @@ class Candidate < ApplicationRecord
   has_one_attached :profile_picture
   has_one_attached :resume
   belongs_to :position
-  has_one :assign
+  has_one :assign, dependent: :destroy
   has_one :assessment, through: :assign
 
   validates :name, presence: true
